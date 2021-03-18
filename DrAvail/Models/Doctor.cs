@@ -28,6 +28,7 @@ namespace DrAvail.Models
         public string Degree { get; set; }
 
         [Required]
+        [Range(21,100)]
         public int Age { get; set; }
 
         [Required]
