@@ -9,118 +9,119 @@
 <h4>Doctor</h4>
 <hr />
 
-    
-        <form asp-action="Create">
-            <div class="doctor">
-                <div class="form-row">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group col-md-6">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label asp-for="RegNumber" class="control-label">Registration Number</label>
-                        <input asp-for="RegNumber" class="form-control" />
-                        <span asp-validation-for="RegNumber" class="text-danger"></span>
-                    </div>
-                </div>
+<form asp-action="Create">
+    <div class="doctor">
+        <div class="form-row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group col-md-6">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="RegNumber" class="control-label">Registration Number</label>
+                <input asp-for="RegNumber" class="form-control" />
+                <span asp-validation-for="RegNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Speciality" class="control-label"></label>
+                <select asp-for="Speciality" class="form-control" asp-items="ViewBag.Speciality">
+                    <option value="">--Select--</option>
+                </select>
+                <span asp-validation-for="Speciality" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Degree" class="control-label"></label>
+                <input asp-for="Degree" class="form-control" />
+                <span asp-validation-for="Degree" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">--Select--</option>
+                    <option value=0>Male</option>
+                    <option value=1>Female</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Practice" class="control-label"></label>
+                <select asp-for="Practice" class="form-control">
+                    <option value="">--Select--</option>
+                    <option value=0>Governmant</option>
+                    <option value=1>Private</option>
+                </select>
+                <span asp-validation-for="Practice" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Experience" class="control-label"></label>
+                <input asp-for="Experience" class="form-control" />
+                <span asp-validation-for="Experience" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-check" hidden>
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="IsVerified" /> @Html.DisplayNameFor(model => model.IsVerified)
+            </label>
+        </div>
+        <div class="form-group input-group">
+            @*<label asp-for="Summary" class="control-label"></label>*@
+            <div class="input-group-prepend">
+                <span class="input-group-text">Add a bio</span>
+            </div>
+            <textarea asp-for="Summary" class="form-control"></textarea>
+            <span asp-validation-for="Summary" class="text-danger"></span>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="District" class="control-label"></label>
+                <select asp-for="District" class="form-control" asp-items="ViewBag.Districts">
+                    <option value="">--Select--</option>
+                </select>
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Pincode" class="control-label"></label>
+                <input asp-for="Pincode" class="form-control" />
+                <span asp-validation-for="Pincode" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="EmailId" class="control-label">Email Address</label>
+                <input asp-for="EmailId" class="form-control" />
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div id="accordionExample" class="accordion">
+            <div class="collapse show" id="hospital" data-parent="#accordionExample" aria-labelledby="hospital">
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label asp-for="Speciality" class="control-label"></label>
-                        <select asp-for="Speciality" class="form-control" asp-items="ViewBag.Speciality">
-                            <option value="">--Select--</option>
-                        </select>
-                        <span asp-validation-for="Speciality" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label asp-for="Degree" class="control-label"></label>
-                        <input asp-for="Degree" class="form-control" />
-                        <span asp-validation-for="Degree" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label asp-for="Age" class="control-label"></label>
-                        <input asp-for="Age" class="form-control" />
-                        <span asp-validation-for="Age" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label asp-for="Gender" class="control-label"></label>
-                        <select asp-for="Gender" class="form-control">
-                            <option value="">--Select--</option>
-                            <option value=0>Male</option>
-                            <option value=1>Female</option>
-                        </select>
-                        <span asp-validation-for="Gender" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label asp-for="Practice" class="control-label"></label>
-                        <select asp-for="Practice" class="form-control">
-                            <option value="">--Select--</option>
-                            <option value=0>Governmant</option>
-                            <option value=1>Private</option>
-                        </select>
-                        <span asp-validation-for="Practice" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label asp-for="Experience" class="control-label"></label>
-                        <input asp-for="Experience" class="form-control" />
-                        <span asp-validation-for="Experience" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group form-check" hidden>
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="IsVerified" /> @Html.DisplayNameFor(model => model.IsVerified)
-                    </label>
-                </div>
-                <div class="form-group input-group">
-                    @*<label asp-for="Summary" class="control-label"></label>*@
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Add a bio</span>
-                    </div>
-                    <textarea asp-for="Summary" class="form-control"></textarea>
-                    <span asp-validation-for="Summary" class="text-danger"></span>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label asp-for="City" class="control-label"></label>
-                        <input asp-for="City" class="form-control" />
-                        <span asp-validation-for="City" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label asp-for="District" class="control-label"></label>
-                        <select asp-for="District" class="form-control" asp-items="ViewBag.Districts">
-                            <option value="">--Select--</option>
-                        </select>
-                        <span asp-validation-for="District" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label asp-for="Pincode" class="control-label"></label>
-                        <input asp-for="Pincode" class="form-control" />
-                        <span asp-validation-for="Pincode" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label asp-for="EmailId" class="control-label">Email Address</label>
-                        <input asp-for="EmailId" class="form-control" />
-                        <span asp-validation-for="EmailId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
-                        <input asp-for="PhoneNumber" class="form-control" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-5" id="hospitalId">
                         <label asp-for="HospitalID" class="control-label">Hospital Name</label> &nbsp;&nbsp;
                         <a href="#addHospital" data-toggle="collapse">Add Hospital</a>
                         <select asp-for="HospitalID" class="form-control" asp-items="ViewBag.HospitalID">
@@ -128,10 +129,12 @@
                         </select>
                     </div>
                 </div>
-                @* To add hospital details if not present already *@
-            <div id="addHospital" class="collapse">
+            </div>
+            @* To add hospital details if not present already *@
+            <div id="addHospital" class="collapse" data-parent="#accordionExample" aria-labelledby="addHospital">
                 <h5>Hospital</h5>
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <a href="#hospital" data-toggle="collapse">Select from Available</a>
+                @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label asp-for="Hospital.Name" class="control-label"></label>
@@ -184,111 +187,111 @@
                 </div>
                 @* Add hospital section ends here *@
             </div>
-            </div>
-            <div id="addCommonAvailability" >
-                <h6>Mon - Fri Timings</h6>
-                <div class="common-availability-common" >
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label asp-for="CommonAvailability.CommonDays.MorningStartTime" class="control-label">Morning Start Time</label>
-                            <input asp-for="CommonAvailability.CommonDays.MorningStartTime" class="form-control" />
-                            <span asp-validation-for="CommonAvailability.CommonDays.MorningStartTime" class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="CommonAvailability.CommonDays.MorningEndTime" class="control-label">Morning End Time</label>
-                            <input asp-for="CommonAvailability.CommonDays.MorningEndTime" class="form-control" />
-                            <span asp-validation-for="CommonAvailability.CommonDays.MorningEndTime" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label asp-for="CommonAvailability.CommonDays.EveningStartTime" class="control-label">Evening Start Time</label>
-                            <input asp-for="CommonAvailability.CommonDays.EveningStartTime" class="form-control" />
-                            <span asp-validation-for="CommonAvailability.CommonDays.EveningStartTime" class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="CommonAvailability.CommonDays.EveningEndTime" class="control-label">Evening End Time</label>
-                            <input asp-for="CommonAvailability.CommonDays.EveningEndTime" class="form-control" />
-                            <span asp-validation-for="CommonAvailability.CommonDays.EveningEndTime" class="text-danger"></span>
-                        </div>
-                    </div>
+        </div>
+    </div>
+    <div id="addCommonAvailability">
+        <h6>Mon - Fri Timings</h6>
+        <div class="common-availability-common">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.CommonDays.MorningStartTime" class="control-label">Morning Start Time</label>
+                    <input asp-for="CommonAvailability.CommonDays.MorningStartTime" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.CommonDays.MorningStartTime" class="text-danger"></span>
                 </div>
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="CommonAvailability.IsAvailableOnWeekend" data-toggle="collapse" href="#commonWeekendInput"/>
-                        Available On Weekends
-                    </label>
-                </div>
-                <div class="collapse" id="commonWeekendInput">
-                    <h6>Weekend Timings</h6>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label asp-for="CommonAvailability.Weekends.MorningStartTime" class="control-label">Morning Start Time</label>
-                            <input asp-for="CommonAvailability.Weekends.MorningStartTime" class="form-control" />
-                            <span asp-validation-for="CommonAvailability.Weekends.MorningStartTime" class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="CommonAvailability.Weekends.MorningEndTime" class="control-label">Morning End Time</label>
-                            <input asp-for="CommonAvailability.Weekends.MorningEndTime" class="form-control" />
-                            <span asp-validation-for="CommonAvailability.Weekends.MorningEndTime" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label asp-for="CommonAvailability.Weekends.EveningStartTime" class="control-label"> Evening Start Time</label>
-                            <input asp-for="CommonAvailability.Weekends.EveningStartTime" class="form-control" />
-                            <span asp-validation-for="CommonAvailability.Weekends.EveningStartTime" class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="CommonAvailability.Weekends.EveningEndTime" class="control-label">Evening End Time</label>
-                            <input asp-for="CommonAvailability.Weekends.EveningEndTime" class="form-control" />
-                            <span asp-validation-for="CommonAvailability.Weekends.EveningEndTime" class="text-danger"></span>
-                        </div>
-                    </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.CommonDays.MorningEndTime" class="control-label">Morning End Time</label>
+                    <input asp-for="CommonAvailability.CommonDays.MorningEndTime" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.CommonDays.MorningEndTime" class="text-danger"></span>
                 </div>
             </div>
-                <div id="addCurrentAvailability" hidden>
-                <div class="form-group" hidden>
-                    <label asp-for="CurrentAvailability.CurrentStartDateTime" class="control-label"></label>
-                    <input asp-for="CurrentAvailability.CurrentStartDateTime" class="form-control" />
-                    <span asp-validation-for="CurrentAvailability.CurrentStartDateTime" class="text-danger"></span>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.CommonDays.EveningStartTime" class="control-label">Evening Start Time</label>
+                    <input asp-for="CommonAvailability.CommonDays.EveningStartTime" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.CommonDays.EveningStartTime" class="text-danger"></span>
                 </div>
-                <div class="form-group" hidden>
-                    <label asp-for="CurrentAvailability.CurrentEndDateTime" class="control-label"></label>
-                    <input asp-for="CurrentAvailability.CurrentEndDateTime" class="form-control" />
-                    <span asp-validation-for="CurrentAvailability.CurrentEndDateTime" class="text-danger"></span>
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.CommonDays.EveningEndTime" class="control-label">Evening End Time</label>
+                    <input asp-for="CommonAvailability.CommonDays.EveningEndTime" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.CommonDays.EveningEndTime" class="text-danger"></span>
                 </div>
-                <div class="form-group" hidden>
-                    <label asp-for="CurrentAvailability.ContactPreference" class="control-label"></label>
-                    <select asp-for="CurrentAvailability.ContactPreference" class="form-control"></select>
-                    <span asp-validation-for="CurrentAvailability.ContactPreference" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="CommonAvailability.IsAvailableOnWeekend" data-toggle="collapse" href="#commonWeekendInput" />
+                Available On Weekends
+            </label>
+        </div>
+        <div class="collapse" id="commonWeekendInput">
+            <h6>Weekend Timings</h6>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.Weekends.MorningStartTime" class="control-label">Morning Start Time</label>
+                    <input asp-for="CommonAvailability.Weekends.MorningStartTime" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.Weekends.MorningStartTime" class="text-danger"></span>
                 </div>
-                <div class="form-group" hidden>
-                    <label asp-for="CurrentAvailability.HospitalID" class="control-label"></label>
-                    <select asp-for="CurrentAvailability.HospitalID" class="form-control" asp-items="ViewBag.HospitalID"></select>
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.Weekends.MorningEndTime" class="control-label">Morning End Time</label>
+                    <input asp-for="CommonAvailability.Weekends.MorningEndTime" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.Weekends.MorningEndTime" class="text-danger"></span>
                 </div>
-            
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.Weekends.EveningStartTime" class="control-label"> Evening Start Time</label>
+                    <input asp-for="CommonAvailability.Weekends.EveningStartTime" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.Weekends.EveningStartTime" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.Weekends.EveningEndTime" class="control-label">Evening End Time</label>
+                    <input asp-for="CommonAvailability.Weekends.EveningEndTime" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.Weekends.EveningEndTime" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addCurrentAvailability" hidden>
+        <div class="form-group" hidden>
+            <label asp-for="CurrentAvailability.CurrentStartDateTime" class="control-label"></label>
+            <input asp-for="CurrentAvailability.CurrentStartDateTime" class="form-control" />
+            <span asp-validation-for="CurrentAvailability.CurrentStartDateTime" class="text-danger"></span>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="CurrentAvailability.CurrentEndDateTime" class="control-label"></label>
+            <input asp-for="CurrentAvailability.CurrentEndDateTime" class="form-control" />
+            <span asp-validation-for="CurrentAvailability.CurrentEndDateTime" class="text-danger"></span>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="CurrentAvailability.ContactPreference" class="control-label"></label>
+            <select asp-for="CurrentAvailability.ContactPreference" class="form-control"></select>
+            <span asp-validation-for="CurrentAvailability.ContactPreference" class="text-danger"></span>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="CurrentAvailability.HospitalID" class="control-label"></label>
+            <select asp-for="CurrentAvailability.HospitalID" class="form-control" asp-items="ViewBag.HospitalID"></select>
+        </div>
 
-            <div class="form-group" hidden>
-                <label asp-for="CurrentAvailability.Status" class="control-label"></label>
-                <select asp-for="CurrentAvailability.Status" class="form-control">
-                    <option value="">--Select</option>
-                    <option value="On Vacation">On Vacation</option>
-                    <option value="Available">Available</option>
-                </select>
-            </div>
-            <div class="form-group" hidden>
-                <label asp-for="CurrentAvailability.HospitalID" class="control-label">Hospital Name</label>
-                <select asp-for="CurrentAvailability.HospitalID" class="form-control" asp-items="ViewBag.HospitalID">
-                    <option value=HospitalID></option>
-                </select>
-            </div>
+
+        <div class="form-group" hidden>
+            <label asp-for="CurrentAvailability.Status" class="control-label"></label>
+            <select asp-for="CurrentAvailability.Status" class="form-control">
+                <option value="">--Select</option>
+                <option value="On Vacation">On Vacation</option>
+                <option value="Available">Available</option>
+            </select>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="CurrentAvailability.HospitalID" class="control-label">Hospital Name</label>
+            <select asp-for="CurrentAvailability.HospitalID" class="form-control" asp-items="ViewBag.HospitalID">
+                <option value=HospitalID></option>
+            </select>
+        </div>
     </div>
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />
     </div>
-    </form>
-
+</form>
 
 
 <div>
@@ -298,16 +301,7 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script type="text/javascript">
-        
-        function disableHospitalSelect() {
-            var x = document.getElementById("hospitalId");
-            if (x.disabled) {
-                x.disabled = false;
-            }
-            else {
-                x.disabled = true;
-            }
-        }
-        
+
+
     </script>
 }

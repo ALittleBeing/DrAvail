@@ -82,11 +82,24 @@ namespace DrAvail.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int? Id)
         {
-            if (ModelState.IsValid)
+            
+            //doctor.HospitalID = 1;
+            //doctor.CommonAvailability.HospitalID = doctor.HospitalID;
+            //doctor.CurrentAvailability.HospitalID = 1;
+            doctor.CurrentAvailability.CurrentStartDateTime = DateTime.Now;
+            doctor.CurrentAvailability.CurrentEndDateTime = DateTime.Now;
+            try
             {
-                _context.Add(doctor);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (!ModelState.IsValid)
+                {
+                    _context.Add(doctor);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception e)
+                {
+                Console.WriteLine(e);
             }
 
             #region selectList
