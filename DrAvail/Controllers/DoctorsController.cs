@@ -80,25 +80,23 @@ namespace DrAvail.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int? Id)
+        public async Task<IActionResult> CreateOnPost()
         {
-            
-            //doctor.HospitalID = 1;
-            //doctor.CommonAvailability.HospitalID = doctor.HospitalID;
-            //doctor.CurrentAvailability.HospitalID = 1;
-            doctor.CurrentAvailability.CurrentStartDateTime = DateTime.Now;
-            doctor.CurrentAvailability.CurrentEndDateTime = DateTime.Now;
+            //var hospital = doctor.Hospital;
+            //doctor.Hospital = hospital;
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    _context.Add(doctor);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
+                Console.WriteLine("Before INSER -> doctor Id: " + doctor.ID);
+                _context.Doctors.Add(doctor);
+                //_context.Add(doctor);
+                await _context.SaveChangesAsync();
+                Console.WriteLine("After INSERT -> doctor Id: " + doctor.ID);
+
+                return RedirectToAction(nameof(Index));
+
             }
             catch (Exception e)
-                {
+            {
                 Console.WriteLine(e);
             }
 
