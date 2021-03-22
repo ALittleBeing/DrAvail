@@ -46,4 +46,6 @@ namespace DrAvail.Models
         public Hospital Hospital { get; set; }
 
     }
+
+    
 }

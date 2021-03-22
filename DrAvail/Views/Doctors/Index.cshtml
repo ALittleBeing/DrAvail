@@ -15,7 +15,7 @@
         <a asp-action="Create">Create New</a>
     </p>
 
-    <table class="table">
+    @*<table class="table">
         <thead>
             <tr>
                 <th>
@@ -133,17 +133,54 @@
                         <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                     </td>
                 </tr>
+
+
             }
         </tbody>
-    </table>
-}
-else
-{
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h6 class="display-4">No doctors available.</h6>
-            Are you a doctor? Want to register? Please click
-            <a asp-action="Create">here</a>.
+    </table>*@
+    @foreach (var item in Model)
+    {
+        <div class="card text-dark bg-light mb-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="..." alt="...">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <div class="col-md-8">
+                            <h5 class="card-title">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </h5>
+                            <br />
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.Speciality)</p>
+                            <p class="card-text text-muted">
+                                @Html.DisplayFor(modelItem => item.Experience) years experience overall
+                            </p>
+                            <p class="card-text">
+                                @Html.DisplayFor(modelItem => item.City), @Html.DisplayFor(modelItem => item.District)
+                                &nbsp;&bull;&nbsp;
+                                <small class="text-muted">@Html.DisplayFor(modelItem => item.Hospital.Name)</small>
+                            </p>
+                        </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-danger" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ID">Details</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
-    </div>
-}
+        }
+
+    }
+    else
+    {
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h6 class="display-4">No doctors available.</h6>
+                Are you a doctor? Want to register? Please click
+                <a asp-action="Create">here</a>.
+            </div>
+        </div>
+    }

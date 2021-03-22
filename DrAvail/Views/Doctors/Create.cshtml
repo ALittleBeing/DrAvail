@@ -9,7 +9,7 @@
 <h4>Doctor</h4>
 <br />
 
-<form asp-action="CreateOnPost">
+<form asp-action="Create">
     <div class="doctor">
         <div class="form-row">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -197,6 +197,7 @@
                 <div class="form-group col-md-3">
                     <label asp-for="CommonAvailability.CommonDays.MorningStartTime" class="control-label">Morning Start Time</label>
                     <input asp-for="CommonAvailability.CommonDays.MorningStartTime" class="form-control" />
+                    
                     <span asp-validation-for="CommonAvailability.CommonDays.MorningStartTime" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-3">

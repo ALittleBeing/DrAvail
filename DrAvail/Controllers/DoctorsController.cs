@@ -80,7 +80,7 @@ namespace DrAvail.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateOnPost()
+        public async Task<IActionResult> Create(int? Id)
         {
             //var hospital = doctor.Hospital;
             //doctor.Hospital = hospital;
@@ -116,6 +116,9 @@ namespace DrAvail.Controllers
             var speciality = from Speciality d in Enum.GetValues(typeof(Speciality))
                              select new { ID = (int)d, Name = d.ToString() };
             ViewBag.Speciality = new SelectList(speciality, "Name", "Name");
+
+            string[] Timing = new string[] {"10:00 AM",  };
+
             #endregion
 
             return View(doctor);
