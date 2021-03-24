@@ -93,7 +93,13 @@
                 <input asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
-            
+            <div class="form-group col-md-4">
+                <label asp-for="District" class="control-label"></label>
+                <select asp-for="District" class="form-control" asp-items="ViewBag.Districts">
+                    <option value="">--Select--</option>
+                </select>
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
             <div class="form-group col-md-3">
                 <label asp-for="Pincode" class="control-label"></label>
                 <input asp-for="Pincode" class="form-control" />
@@ -188,11 +194,20 @@
         <h6>Mon - Fri Timings</h6>
         <div class="common-availability-common">
             <div class="form-row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-3" hidden>
                     <label asp-for="CommonAvailability.CommonDays.MorningStartTime" class="control-label">Morning Start Time</label>
                     <input asp-for="CommonAvailability.CommonDays.MorningStartTime" class="form-control" />
-                    
                     <span asp-validation-for="CommonAvailability.CommonDays.MorningStartTime" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.CommonDays.MorningStartHour" class="control-label">Morning Start Hour</label>
+                    <input asp-for="CommonAvailability.CommonDays.MorningStartHour" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.CommonDays.MorningStartHour" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.CommonDays.MorningStartMinute" class="control-label">Morning Start Minute</label>
+                    <input asp-for="CommonAvailability.CommonDays.MorningStartMinute" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.CommonDays.MorningStartMinute" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-3">
                     <label asp-for="CommonAvailability.CommonDays.MorningEndTime" class="control-label">Morning End Time</label>

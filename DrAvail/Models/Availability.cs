@@ -9,8 +9,26 @@ namespace DrAvail.Models
         [Microsoft.EntityFrameworkCore.Owned]
         public class Timings
         {
+            [NotMapped]
+            public string MorningStartHour { get; set; }
+
+            [NotMapped]
+            public string MorningStartMinute { get; set; }
+
+
             [DataType(DataType.Time)]
             public DateTime MorningStartTime { get; set; }
+            //public string MorningStartTime 
+            //{ 
+            //    get 
+            //    {
+            //        return MorningStartTime;
+            //    }
+            //    set
+            //    {
+            //        MorningStartTime = MorningStartHour + ":" + MorningStartMinute + " AM";
+            //    }
+            // }
 
             [DataType(DataType.Time)]
             public DateTime MorningEndTime { get; set; }

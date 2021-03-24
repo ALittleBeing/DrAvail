@@ -86,9 +86,21 @@ namespace DrAvail.Controllers
             //doctor.Hospital = hospital;
             try
             {
+                doctor.CommonAvailability.CommonDays.MorningStartTime = new DateTime(year:2021,month:3,day:24,
+                    hour:int.Parse(doctor.CommonAvailability.CommonDays.MorningStartHour),
+                    minute: int.Parse(doctor.CommonAvailability.CommonDays.MorningStartMinute),
+                    second:0);
                 Console.WriteLine("Before INSER -> doctor Id: " + doctor.ID);
-                _context.Doctors.Add(doctor);
-                //_context.Add(doctor);
+                if (doctor.HospitalID==0)
+                {
+                    _context.Doctors.Add(doctor);
+
+                }
+                else
+                {
+                    _context.Add(doctor);
+
+                }
                 await _context.SaveChangesAsync();
                 Console.WriteLine("After INSERT -> doctor Id: " + doctor.ID);
 
@@ -101,9 +113,9 @@ namespace DrAvail.Controllers
             }
 
             #region selectList
-            ViewData["CommonAvaliabilityID"] = new SelectList(_context.Availabilities, "ID", "ID", doctor.CommonAvaliabilityID);
-            ViewData["CurrentAvaliabilityID"] = new SelectList(_context.Availabilities, "ID", "ID", doctor.CurrentAvaliabilityID);
-            ViewData["HospitalID"] = new SelectList(_context.Hospitals, "ID", "Address", doctor.HospitalID);
+            ViewData["CommonAvaliabilityID"] = new SelectList(_context.Availabilities, "ID", "ID");
+            ViewData["CurrentAvaliabilityID"] = new SelectList(_context.Availabilities, "ID", "ID");
+            ViewData["HospitalID"] = new SelectList(_context.Hospitals, "ID", "Name");
 
             var values = from HospitalType H in Enum.GetValues(typeof(HospitalType))
                          select new { ID = (int)H, Name = H.ToString() };
@@ -116,9 +128,6 @@ namespace DrAvail.Controllers
             var speciality = from Speciality d in Enum.GetValues(typeof(Speciality))
                              select new { ID = (int)d, Name = d.ToString() };
             ViewBag.Speciality = new SelectList(speciality, "Name", "Name");
-
-            string[] Timing = new string[] {"10:00 AM",  };
-
             #endregion
 
             return View(doctor);
