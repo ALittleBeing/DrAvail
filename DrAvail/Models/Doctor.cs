@@ -64,8 +64,9 @@ namespace DrAvail.Models
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
+        [ForeignKey(nameof(Hospital))]
         public int HospitalID { get; set; }
-        public Hospital Hospital { get; set; }
+        public virtual Hospital Hospital { get; set; }
 
         [ForeignKey(nameof(CommonAvailability))]
         public int CommonAvaliabilityID { get; set; }

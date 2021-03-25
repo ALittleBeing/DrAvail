@@ -78,9 +78,9 @@ namespace DrAvail.Controllers
         // POST: Doctors/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int? Id)
+        public async Task<IActionResult> CreateOnPost()
         {
             //var hospital = doctor.Hospital;
             //doctor.Hospital = hospital;
@@ -90,17 +90,10 @@ namespace DrAvail.Controllers
                     hour:int.Parse(doctor.CommonAvailability.CommonDays.MorningStartHour),
                     minute: int.Parse(doctor.CommonAvailability.CommonDays.MorningStartMinute),
                     second:0);
-                Console.WriteLine("Before INSER -> doctor Id: " + doctor.ID);
-                if (doctor.HospitalID==0)
-                {
+                Console.WriteLine("Before INSER -> Hospital Id: " + doctor.HospitalID);
+                Console.WriteLine(doctor);
                     _context.Doctors.Add(doctor);
 
-                }
-                else
-                {
-                    _context.Add(doctor);
-
-                }
                 await _context.SaveChangesAsync();
                 Console.WriteLine("After INSERT -> doctor Id: " + doctor.ID);
 
