@@ -19,6 +19,7 @@ namespace DrAvail.Models
         //Need to be unique
         [Required]
         [MaxLength(20)]
+        [Display(Name ="Registration Number")]
         public string RegNumber { get; set; }
 
         [Required]
@@ -58,15 +59,16 @@ namespace DrAvail.Models
 
         [Required]
         [DataType(DataType.EmailAddress)]
+        [Display(Name="Email Address")]
         public string EmailId { get; set; }
 
         [Required]
-        [DataType(DataType.PhoneNumber)]
+        [Phone]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        [ForeignKey(nameof(Hospital))]
         public int HospitalID { get; set; }
-        public virtual Hospital Hospital { get; set; }
+        public Hospital Hospital { get; set; }
 
         [ForeignKey(nameof(CommonAvailability))]
         public int CommonAvaliabilityID { get; set; }

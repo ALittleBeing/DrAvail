@@ -82,20 +82,30 @@ namespace DrAvail.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateOnPost()
         {
-            //var hospital = doctor.Hospital;
-            //doctor.Hospital = hospital;
+            
             try
             {
                 doctor.CommonAvailability.CommonDays.MorningStartTime = new DateTime(year:2021,month:3,day:24,
                     hour:int.Parse(doctor.CommonAvailability.CommonDays.MorningStartHour),
                     minute: int.Parse(doctor.CommonAvailability.CommonDays.MorningStartMinute),
                     second:0);
-                Console.WriteLine("Before INSER -> Hospital Id: " + doctor.HospitalID);
-                Console.WriteLine(doctor);
-                    _context.Doctors.Add(doctor);
+                doctor.CommonAvailability.AvailabilityType = doctor.RegNumber + "Common";
+                //Console.WriteLine("----------------------------------------------");
+                //Console.WriteLine("Before INSERT -> Hospital Id: " + doctor.HospitalID);
+                //Console.WriteLine(doctor);
+                //Console.WriteLine("----------------------------------------------");
+
+                if (doctor.HospitalID !=0)
+                {
+                    doctor.Hospital = null;
+                    //_context.Entry(doctor.Hospital).State = EntityState.Unchanged;
+                }
+                _context.Doctors.Add(doctor);
 
                 await _context.SaveChangesAsync();
-                Console.WriteLine("After INSERT -> doctor Id: " + doctor.ID);
+                //Console.WriteLine("----------------------------------------------");
+                //Console.WriteLine("After INSERT -> doctor Id: " + doctor.ID);
+                //Console.WriteLine(doctor);
 
                 return RedirectToAction(nameof(Index));
 
@@ -139,9 +149,17 @@ namespace DrAvail.Controllers
             {
                 return NotFound();
             }
+
             ViewData["CommonAvaliabilityID"] = new SelectList(_context.Availabilities, "ID", "ID", doctor.CommonAvaliabilityID);
             ViewData["CurrentAvaliabilityID"] = new SelectList(_context.Availabilities, "ID", "ID", doctor.CurrentAvaliabilityID);
-            ViewData["HospitalID"] = new SelectList(_context.Hospitals, "ID", "Address", doctor.HospitalID);
+            ViewData["HospitalID"] = new SelectList(_context.Hospitals, "ID", "Name", doctor.HospitalID);
+            var district = from District d in Enum.GetValues(typeof(District))
+                           select new { ID = (int)d, Name = d.ToString() };
+            ViewBag.Districts = new SelectList(district, "ID", "Name");
+
+            var speciality = from Speciality d in Enum.GetValues(typeof(Speciality))
+                             select new { ID = (int)d, Name = d.ToString() };
+            ViewBag.Speciality = new SelectList(speciality, "Name", "Name");
             return View(doctor);
         }
 
@@ -179,7 +197,14 @@ namespace DrAvail.Controllers
             }
             ViewData["CommonAvaliabilityID"] = new SelectList(_context.Availabilities, "ID", "ID", doctor.CommonAvaliabilityID);
             ViewData["CurrentAvaliabilityID"] = new SelectList(_context.Availabilities, "ID", "ID", doctor.CurrentAvaliabilityID);
-            ViewData["HospitalID"] = new SelectList(_context.Hospitals, "ID", "Address", doctor.HospitalID);
+            ViewData["HospitalID"] = new SelectList(_context.Hospitals, "ID", "Name", doctor.HospitalID);
+            var district = from District d in Enum.GetValues(typeof(District))
+                           select new { ID = (int)d, Name = d.ToString() };
+            ViewBag.Districts = new SelectList(district, "ID", "Name");
+
+            var speciality = from Speciality d in Enum.GetValues(typeof(Speciality))
+                             select new { ID = (int)d, Name = d.ToString() };
+            ViewBag.Speciality = new SelectList(speciality, "Name", "Name");
             return View(doctor);
         }
 
