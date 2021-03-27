@@ -70,6 +70,10 @@ namespace DrAvail.Controllers
             var speciality = from Speciality d in Enum.GetValues(typeof(Speciality))
                              select new { ID = (int)d, Name = d.ToString() };
             ViewBag.Speciality = new SelectList(speciality, "Name", "Name");
+            
+            var gender = from Gender H in Enum.GetValues(typeof(Gender))
+                         select new { Name = H.ToString() };
+            ViewBag.Gender = gender.ToList();
             #endregion
 
             return View();
@@ -131,6 +135,10 @@ namespace DrAvail.Controllers
             var speciality = from Speciality d in Enum.GetValues(typeof(Speciality))
                              select new { ID = (int)d, Name = d.ToString() };
             ViewBag.Speciality = new SelectList(speciality, "ID", "Name");
+            //var gender = from Gender H in Enum.GetValues(typeof(Gender))
+            //             select new { Name = H.ToString() };
+            //ViewBag.Gender = gender.ToList();
+            ViewBag.Gender = Enum.GetNames(typeof(Gender)).Cast<Gender>().ToList();
             #endregion
 
             return View(doctor);

@@ -3,10 +3,6 @@
 @{
     ViewData["Title"] = "Doctors";
 }
-<br />
-<br />
-
-
 @if (Model.Any())
 {
     <h4>Available Doctors</h4>
@@ -15,147 +11,24 @@
         <a asp-action="Create">Create New</a>
     </p>
 
-    @*<table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RegNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Speciality)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Degree)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Age)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Gender)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Practice)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Experience)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsVerified)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Summary)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.City)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.District)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EmailId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PhoneNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Hospital)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CommonAvailability)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CurrentAvailability)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RegNumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Speciality)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Degree)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Age)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Gender)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Practice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Experience)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsVerified)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Summary)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.City)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.District)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EmailId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PhoneNumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Hospital.Address)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CommonAvailability.ID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CurrentAvailability.ID)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                    </td>
-                </tr>
-
-
-            }
-        </tbody>
-    </table>*@
     @foreach (var item in Model)
     {
-        <div class="card text-dark bg-light mb-3">
+        <div class="card text-dark bg-light mr-md-3">
             <div class="row">
                 @if ("Male".Equals(item.Gender.ToString()))
                 {
-                    <div class="col-md-3">
-                        <img class="img-fluid" src="/Images/img_avatar3.png" alt="...">
+                    <div class="col-md-3 p-0">
+                        <img class="img-fluid"  src="/Images/img_avatar3.png" alt="...">
                     </div>
                 }
                 else
                 {
-                    <div class="col-md-3 mr-md-3">
+                    <div class="col-md-3 p-0">
                         <img class="img-fluid" src="/Images/img_avatar5.png" alt="...">
                     </div>
                 }
                 <div class="col-md-9">
-                    <div class="card-body" >
+                    <div class="card-body">
                         <div class="col-md-8">
                             <h5 class="card-title">
                                 @Html.DisplayFor(modelItem => item.Name)
@@ -180,16 +53,15 @@
                 </div>
             </div>
         </div>
-        }
-
     }
-    else
-    {
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h6 class="display-4">No doctors available.</h6>
-                Are you a doctor? Want to register? Please click
-                <a asp-action="Create">here</a>.
-            </div>
+}
+else
+{
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h6 class="display-4">No doctors available.</h6>
+            Are you a doctor? Want to register? Please click
+            <a asp-action="Create">here</a>.
         </div>
-    }
+    </div>
+}

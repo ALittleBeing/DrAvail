@@ -11,9 +11,11 @@ namespace DrAvail.Models
         public int ID { get; set; }
 
         [Required]
+        [Display(Name ="Hospital Name")]
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Hospital Type")]
         public HospitalType Type { get; set; }
 
         [Required]

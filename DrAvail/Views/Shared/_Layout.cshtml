@@ -6,20 +6,22 @@
     <title>@ViewData["Title"] - DrAvail</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    @*<style>
-        body{
+    <link rel="icon" type="image/ico" href="/Images/logo.ico" />
+    <style>
+        body {
             background-image: url(/Images/bg-doctor.jpg);
-            background-repeat:no-repeat;
+            background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
-    </style>*@
+        
+    </style>
 </head>
 <body >
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light navbar-nav nav-pills">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm fixed-top bg-warning border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DrAvail</a>
+                <a class="navbar-brand span3" asp-area="" asp-controller="Home" asp-action="Index" >DrAvail</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,6 +51,11 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             @RenderBody()
         </main>
     </div>

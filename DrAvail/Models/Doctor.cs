@@ -14,6 +14,7 @@ namespace DrAvail.Models
 
         [Required]
         [MinLength(3), MaxLength(60)]
+        [Display(Name ="Full Name")]
         public string Name { get; set; }
 
         //Need to be unique
@@ -88,7 +89,8 @@ namespace DrAvail.Models
     public enum Gender
     {
         Male = 0,
-        Female
+        Female,
+        
     }
 
     public enum Practice
