@@ -130,7 +130,7 @@ namespace DrAvail.Controllers
 
             var speciality = from Speciality d in Enum.GetValues(typeof(Speciality))
                              select new { ID = (int)d, Name = d.ToString() };
-            ViewBag.Speciality = new SelectList(speciality, "Name", "Name");
+            ViewBag.Speciality = new SelectList(speciality, "ID", "Name");
             #endregion
 
             return View(doctor);

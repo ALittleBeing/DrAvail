@@ -29,10 +29,13 @@ namespace DrAvail.Models
         [DataType(DataType.PostalCode)]
         public int Pincode { get; set; }
 
+
         [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email Address")]
         public string EmailId { get; set; }
 
-        [DataType(DataType.PhoneNumber)]
+        [Phone]
+        [Display(Name = "Phone Number")]
         public string PhoneNo { get; set; }
 
         public ICollection<Doctor> Doctors { get; set; }

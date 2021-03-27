@@ -200,6 +200,11 @@
                     <span asp-validation-for="CommonAvailability.CommonDays.MorningStartTime" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-3">
+                    <label asp-for="CommonAvailability.AvailabilityType" class="control-label">Availability Type</label>
+                    <input asp-for="CommonAvailability.AvailabilityType" class="form-control" />
+                    <span asp-validation-for="CommonAvailability.AvailabilityType" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
                     <label asp-for="CommonAvailability.CommonDays.MorningStartHour" class="control-label">Morning Start Hour</label>
                     <input asp-for="CommonAvailability.CommonDays.MorningStartHour" class="form-control" />
                     <span asp-validation-for="CommonAvailability.CommonDays.MorningStartHour" class="text-danger"></span>

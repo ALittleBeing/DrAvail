@@ -60,10 +60,10 @@ namespace DrAvail.Models
         //for current availability
 
         [RequireWhenCurrent]
-        public DateTime CurrentStartDateTime { get; set; }
+        public DateTime? CurrentStartDateTime { get; set; }
 
         [RequireWhenCurrent]
-        public DateTime CurrentEndDateTime { get; set; }
+        public DateTime? CurrentEndDateTime { get; set; }
 
         public ContactPreference ContactPreference { get; set; } = ContactPreference.Always;
 

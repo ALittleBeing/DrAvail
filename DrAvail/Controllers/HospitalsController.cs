@@ -34,6 +34,7 @@ namespace DrAvail.Controllers
             }
 
             var hospital = await _context.Hospitals
+                .Include(h => h.Doctors)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (hospital == null)
             {

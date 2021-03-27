@@ -150,7 +150,7 @@
                 }
                 else
                 {
-                    <div class="col-md-3" style="padding-left:unset; padding-right:unset;">
+                    <div class="col-md-3 mr-md-3">
                         <img class="img-fluid" src="/Images/img_avatar5.png" alt="...">
                     </div>
                 }
@@ -160,7 +160,6 @@
                             <h5 class="card-title">
                                 @Html.DisplayFor(modelItem => item.Name)
                             </h5>
-                            <br />
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Speciality)</p>
                             <p class="card-text text-muted">
                                 @Html.DisplayFor(modelItem => item.Experience) years experience overall
@@ -168,11 +167,12 @@
                             <p class="card-text">
                                 @Html.DisplayFor(modelItem => item.City), @Html.DisplayFor(modelItem => item.District)
                                 &nbsp;&bull;&nbsp;
-                                <small class="text-muted">@Html.DisplayFor(modelItem => item.Hospital.Name)</small>
+                                <a asp-action="Details" asp-controller="Hospitals" asp-route-id="@item.HospitalID">@Html.DisplayFor(modelItem => item.Hospital.Name)</a>
                             </p>
+                            <br />
                         </div>
-                        <div class="col-md-1">
-                            <a class="btn btn-danger" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <div>
+                            <a class="btn btn-danger" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
                             <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ID">Details</a>
                         </div>
                     </div>
