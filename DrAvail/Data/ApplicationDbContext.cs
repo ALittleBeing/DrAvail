@@ -19,6 +19,8 @@ namespace DrAvail.Data
 
         public DbSet<Availability> Availabilities { get; set; }
 
-        
+        public DbSet<Location> Locations { get; set; }
+
+
     }
 }

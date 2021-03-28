@@ -70,7 +70,7 @@ namespace DrAvail.Controllers
             var speciality = from Speciality d in Enum.GetValues(typeof(Speciality))
                              select new { ID = (int)d, Name = d.ToString() };
             ViewBag.Speciality = new SelectList(speciality, "Name", "Name");
-            
+
             var gender = from Gender H in Enum.GetValues(typeof(Gender))
                          select new { Name = H.ToString() };
             ViewBag.Gender = gender.ToList();
@@ -86,20 +86,20 @@ namespace DrAvail.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateOnPost()
         {
-            
+
             try
             {
-                doctor.CommonAvailability.CommonDays.MorningStartTime = new DateTime(year:2021,month:3,day:24,
-                    hour:int.Parse(doctor.CommonAvailability.CommonDays.MorningStartHour),
+                doctor.CommonAvailability.CommonDays.MorningStartTime = new DateTime(year: 2021, month: 3, day: 24,
+                    hour: int.Parse(doctor.CommonAvailability.CommonDays.MorningStartHour),
                     minute: int.Parse(doctor.CommonAvailability.CommonDays.MorningStartMinute),
-                    second:0);
+                    second: 0);
                 doctor.CommonAvailability.AvailabilityType = doctor.RegNumber + "Common";
                 //Console.WriteLine("----------------------------------------------");
                 //Console.WriteLine("Before INSERT -> Hospital Id: " + doctor.HospitalID);
                 //Console.WriteLine(doctor);
                 //Console.WriteLine("----------------------------------------------");
 
-                if (doctor.HospitalID !=0)
+                if (doctor.HospitalID != 0)
                 {
                     doctor.Hospital = null;
                     //_context.Entry(doctor.Hospital).State = EntityState.Unchanged;
@@ -163,7 +163,7 @@ namespace DrAvail.Controllers
             ViewData["HospitalID"] = new SelectList(_context.Hospitals, "ID", "Name", doctor.HospitalID);
             var district = from District d in Enum.GetValues(typeof(District))
                            select new { ID = (int)d, Name = d.ToString() };
-            ViewBag.Districts = new SelectList(district, "ID", "Name");
+            //ViewBag.Districts = new SelectList(district, "ID", "Name");
 
             var speciality = from Speciality d in Enum.GetValues(typeof(Speciality))
                              select new { ID = (int)d, Name = d.ToString() };
@@ -257,5 +257,19 @@ namespace DrAvail.Controllers
         {
             return View();
         }
+
+        public JsonResult GetLocations(int Pincode)
+        {
+            var locations = _context.Locations
+                .FromSqlRaw("SELECT * FROM Locations WHERE Pincode ==@Pincode", Pincode);
+            Console.WriteLine("Pincode: " + Pincode);
+            var locations2 = from location in _context.Locations
+                             where location.Pincode == Pincode
+                             select new { Locality = location.Locality, Dis = location.District };
+            
+            return Json(locations2.ToList());
+        }
+
     }
+
 }
